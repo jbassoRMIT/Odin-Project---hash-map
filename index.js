@@ -46,6 +46,44 @@ class HashMap{
             return false;
         }
     }
+    length(){
+        //get keys as an array
+        const keys=Object.keys(this.array);
+        return keys.length;
+    }
+    clear(){
+        //get the keys as a list
+        const keys=Object.keys(this.array);
+
+        //iterate over keys, calling delete operator in the object on each
+        for(let key of keys){
+            delete this.array[key];
+        }
+    }
+    keys(){
+        return Object.keys(this.array);
+    }
+    values(){
+        //start with empty array, iterate over keys and push array[key] to the empty array
+        const vals=[];
+        const keys=Object.keys(this.array);
+        for(let key of keys){
+            const val=this.array[key];
+            vals.push(val);
+        }
+
+        return vals;
+    }
+    entries(){
+        //similar process to previous method jsut different output format
+        const pairs=[];
+        const keys=Object.keys(this.array);;
+        for (let key of keys){
+            const pair=[key,this.array[key]];
+            pairs.push(pair);
+        }
+        return pairs;
+    }
 
 }
 
@@ -61,3 +99,7 @@ console.log(test.has("banana"));
 console.log(test.has("toy"))
 console.log(test.remove("banana"));
 console.log(test.array);
+console.log(test.keys());
+console.log(test.values());
+console.log(test.entries());
+
